@@ -27,9 +27,10 @@ class LinkedList:
     def print(self):
         if self.head is not None:
             current = self.head
-            list_contents = '[' + str(current.data)
+            list_contents = '[' + str(current.data)  # Fence-post approach 
+            current = current.next    #  load next node
             while current:
-                list_contents += str(current.data)  # Implement fence post algorithm for '4, 5, 6' look
+                list_contents += (', ' + str(current.data))
                 current = current.next
             list_contents += ']'
             print(list_contents)
