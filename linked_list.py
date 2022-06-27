@@ -61,6 +61,25 @@ class LinkedList:
             current = current.next
         return -1                                       # Assertion: value not found
 
+    '''
+    Reversing a linked list
+        The setup:
+            1. initially 'current' and 'following' are set to head (covers single element case)
+            2. previous is set to null (no prior element exists)
+    '''
+    def reverse(self):
+        previous = None
+        current = self.head
+        following = self.head
+
+        while current is not None:
+            following = following.next
+            current.next = previous
+            previous = current 
+            current = following
+            
+        self.head = previous
+
     def print(self):
         if self.head is not None:
             current = self.head
@@ -96,3 +115,8 @@ ll.pop()        # [5, 6]
 ll.print()      # '[5, 6]'
 return_val = ll.search(1)
 print('Index of target: ' + str(return_val)) # expecting -1, value was recently popped
+ll.append(8)
+ll.append(3)
+ll.print()
+ll.reverse()
+ll.print()
