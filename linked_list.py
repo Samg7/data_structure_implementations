@@ -3,6 +3,12 @@ Linked List implementation
 Date: June 25, 2022 (06.25.2022)
 '''
 
+'''
+Notes -- I need to go back and verify each function is tests for an empty list
+    - fpop() was recently fixed
+'''
+
+
 class Node(object):
     def __init__(self, data=None, next=None):           # Node constructor
         self.data = data
@@ -27,16 +33,31 @@ class LinkedList:
     def pop(self):
         current = self.head
 
+        if current is None:
+            return
+
         # Special case: list contains one element
         if current.next is None:
             self.head = None
+            return
 
         # Case: list contains several elements
-        previous = current                          # Case: There's only one element in the list
+        previous = current                              # Case: There's only one element in the list
         while current.next is not None:
             previous = current
             current = current.next
         previous.next = None
+
+    def search(self, value):
+        index = 0
+        current = self.head
+
+        while current is not None:
+            if current.data == value:
+                return index
+            index += 1
+            current = current.next
+        return -1                                       # Assertion: value not found
 
     def print(self):
         if self.head is not None:
@@ -55,13 +76,21 @@ class LinkedList:
 # Function testing
 ll = LinkedList()
 ll.print()      # 'Linked list is empty'
+return_val = ll.search(4)
+print('Index of target: ' + str(return_val)) # expecting -1, empty list
 ll.append(4)
 ll.print()      # '[4]'
+return_val = ll.search(4)
+print('Index of target: ' + str(return_val)) # expecting 0, first element in the list
 ll.pop()        # []
 ll.print()      # 'Linked list is empty'
 ll.append(5)    # [5]
 ll.append(6)    # [5, 6]
 ll.append(1)    # [5, 6, 1]
 ll.print()      # '[5, 6, 1]'
-ll.pop()        # [5, 6]  
+return_val = ll.search(1)
+print('Index of target: ' + str(return_val)) # expecting 2, last element in the list
+ll.pop()        # [5, 6]
 ll.print()      # '[5, 6]'
+return_val = ll.search(1)
+print('Index of target: ' + str(return_val)) # expecting -1, value was recently popped
