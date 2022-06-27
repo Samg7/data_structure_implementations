@@ -4,8 +4,10 @@ Date: June 25, 2022 (06.25.2022)
 '''
 
 '''
-Notes -- I need to go back and verify each function is tests for an empty list
-    - fpop() was recently fixed
+Notes:
+    1) I need to go back and verify each function is tests for an empty list
+        - fpop() was recently fixed
+    2) I should re-visit my implementations and refactor where possible
 '''
 
 
