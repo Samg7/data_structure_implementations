@@ -1,3 +1,11 @@
+# g++ files
+Stack.dSYM
+*.o
+a.out
+
+# VS Code files
+.vscode
+
 # Mac OS files
 .DS_Store
 
